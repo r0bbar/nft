@@ -3,7 +3,7 @@ import {Box, Button, Input, Flex, Image, Link, Spacer } from '@chakra-ui/react'
 import { ethers, BigNumber } from 'ethers';
 import felineSoulmate from './FelineSoulmate.json';
 
-const felineSoulmateAddress = "";
+const felineSoulmateAddress = "0xE828E27058473c99F736Ff2c4C86Dd3ec2820392";
 
 const MainMint = ( { accounts, setAccounts } ) => {
     const [ mintAmount, setMintAmount] = useState(1);
@@ -11,6 +11,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
 
     async function handleMint() {
         if (window.ethereum) {
+            console.log("mintAmount: ", mintAmount);
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const contract = new ethers.Contract(
@@ -20,7 +21,14 @@ const MainMint = ( { accounts, setAccounts } ) => {
             );
 
             try {
-                const response = await contract.mint(mintAmount);
+                const response = await contract.mint(
+                    BigNumber.from(mintAmount), 
+                    { 
+                        value: ethers.utils.parseEther(
+                                (0.02 * mintAmount).toString()
+                            )
+                    }
+                );
                 console.log("Response: ", response);
             } catch(err) {
                 console.log("Error", err)
