@@ -1,3 +1,10 @@
+I. Overall
+1. Prepare React website and deploy Smart Contract following steps below in section II
+2. Use "Merkle_Tree_Whitelist_NFT-main" to compute merkleRoot
+3. Use "nft_contract.py" to set Merkle root to deployed contract
+4. Deploy React website to for example https://cloud.digitalocean.com/
+
+II. React website preparation
 1. Initial install:
     npx create-react-app felinesoulmate_web
     npm i -D hardhat
