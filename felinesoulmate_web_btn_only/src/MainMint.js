@@ -2,15 +2,43 @@ import { useState} from 'react';
 import {Box, Button, Input, Flex, Image, Link, Spacer } from '@chakra-ui/react'
 import { ethers, BigNumber } from 'ethers';
 import felineSoulmate from './FelineSoulmate.json';
+import {Buffer} from 'buffer';
 
-const felineSoulmateAddress = "";
+const felineSoulmateAddress = "0x9A01A2Bed04877aDB63962f401F45a775c9030B3";
 
 const MainMint = ( { accounts, setAccounts } ) => {
     const [ mintAmount, setMintAmount] = useState(1);
     const isConnected = Boolean(accounts[0]);
 
-    async function handleMint() {
+    async function handlePrivateMint() {
         if (window.ethereum) {
+            const { MerkleTree } = require('merkletreejs');
+            const keccak256 = require('keccak256');
+            
+            // Hardcoded here! If address not here, "getHexProof" will return null!!
+            let whitelistAddresses = [
+                "0x07fa8e4f4ab4e4b72a7efca08f494a566a0c8568",
+                "0X5A641E5FB72A2FD9137312E7694D42996D689D99",
+                "0XDCAB482177A592E424D1C8318A464FC922E8DE40",
+                "0X6E21D37E07A6F7E53C7ACE372CEC63D4AE4B6BD0",
+                "0X09BAAB19FC77C19898140DADD30C4685C597620B",
+                "0XCC4C29997177253376528C05D3DF91CF2D69061A",
+                "0xdD870fA1b7C4700F2BD7f44238821C26f7392148"
+              ];
+            
+            const leafNodes = whitelistAddresses.map(addr => keccak256(addr));
+            const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
+            const rootHash = merkleTree.getRoot();
+            const wallet = accounts[0]
+            const wallet_hash = keccak256(wallet)
+            const hexProof = merkleTree.getHexProof(wallet_hash);
+            console.log('merkleTree (Whitelist)', merkleTree.toString());
+            console.log("rootHash: ", rootHash);
+            console.log("wallet: ", wallet);
+            console.log("wallet_hash", wallet_hash.toString())
+            console.log("hexProof: ", hexProof.toString());
+
+            console.log("mintAmount: ", mintAmount);
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const contract = new ethers.Contract(
@@ -20,7 +48,44 @@ const MainMint = ( { accounts, setAccounts } ) => {
             );
 
             try {
-                const response = await contract.mint(mintAmount);
+                const response = await contract.privateMint(
+                    hexProof,
+                    BigNumber.from(mintAmount), 
+                    { 
+                        value: ethers.utils.parseEther(
+                                (0.02 * mintAmount).toString()
+                            )
+                    }
+                );
+                console.log("Response: ", response);
+            } catch(err) {
+                console.log("Error", err)
+            }
+        }
+    }
+
+    async function handlePublicMint() {
+        if (window.ethereum) {
+            console.log("wallet: ", accounts[0]);
+
+            console.log("mintAmount: ", mintAmount);
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(
+                felineSoulmateAddress,
+                felineSoulmate.abi,
+                signer
+            );
+
+            try {
+                const response = await contract.mint(
+                    BigNumber.from(mintAmount), 
+                    { 
+                        value: ethers.utils.parseEther(
+                                (0.02 * mintAmount).toString()
+                            )
+                    }
+                );
                 console.log("Response: ", response);
             } catch(err) {
                 console.log("Error", err)
@@ -40,18 +105,16 @@ const MainMint = ( { accounts, setAccounts } ) => {
 
     return  (
         <div>
-            <h1>Feline Soulmate</h1>
-            <p>Blah blah</p>
             {isConnected? (
                 <div>
                     <div>
                         <Button 
-                            backgroundColor="#D6517D" 
+                            backgroundColor="#212F3C"
                             borderRadius="5px"
                             boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
-                            fontFamily="inherit"
+                            fontFamily="Arial"
                             padding="15px"
                             margin="0 15px"
                             onClick={handleDecrement}>
@@ -59,8 +122,8 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         </Button>
                         <Input 
                             readOnly
-                            fontFamily="inherit"
-                            width="100p"
+                            fontFamily="Arial"
+                            width="100px"
                             height="40px"
                             textAlign="center"
                             paddingLeft="19px"
@@ -68,12 +131,12 @@ const MainMint = ( { accounts, setAccounts } ) => {
                             type="number"
                             value={mintAmount} />
                         <Button 
-                            backgroundColor="#D6517D" 
+                            backgroundColor="#212F3C" 
                             borderRadius="5px"
                             boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
-                            fontFamily="inherit"
+                            fontFamily="Arial"
                             padding="15px"
                             margin="0 15px"
                             onClick={handleIncrement}>
@@ -81,15 +144,27 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         </Button>
                     </div>
                     <Button 
-                        backgroundColor="#D6517D" 
-                        borderRadius="5px"
+                        backgroundColor="#212F3C" 
+                        borderRadius="25px"
                         boxShadow="0px 2px 2px 1px #0F0F0F"
                         color="white"
                         cursor="pointer"
                         fontFamily="inherit"
                         padding="15px"
                         margin="0 15px"
-                        onClick={handleMint}>
+                        onClick={handlePrivateMint}>
+                            Private Mint
+                    </Button>
+                    <Button 
+                        backgroundColor="#212F3C" 
+                        borderRadius="25px"
+                        boxShadow="0px 2px 2px 1px #0F0F0F"
+                        color="white"
+                        cursor="pointer"
+                        fontFamily="inherit"
+                        padding="15px"
+                        margin="0 15px"
+                        onClick={handlePublicMint}>
                             Mint Now!
                     </Button>
                 </div>
