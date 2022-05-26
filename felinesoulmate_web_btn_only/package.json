@@ -2,9 +2,6 @@
   "name": "felinesoulmate_web",
   "version": "0.1.0",
   "private": true,
-  "engines" : { 
-    "node" : ">=17.0.0" 
-  },
   "dependencies": {
     "@chakra-ui/react": "^2.0.0",
     "@emotion/react": "^11.9.0",
