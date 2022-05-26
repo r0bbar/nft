@@ -1,12 +1,25 @@
-I. Overall
-1. Prepare React website and deploy Smart Contract following steps below in section II
-2. Use "Merkle_Tree_Whitelist_NFT-main" to compute merkleRoot
-3. Use "nft_contract.py" to set Merkle root to deployed contract
-4. Deploy React website to for example https://cloud.digitalocean.com/
+I. Overall Project planning
+Primary Market
+  1. Art and attributes generation
+    https://github.com/r0bbar/nft/tree/master/hashlips_art_engine
+    https://www.youtube.com/watch?v=ArYfwaYNhRE 
+  2. IPFS https://www.youtube.com/watch?v=3jizwk6_m1s
+  3. Prepare React website and deploy Smart Contract following steps below in section II
+  4. Use "Merkle_Tree_Whitelist_NFT-main" to compute merkleRoot
+  5. Use "nft_contract.py" (https://github.com/r0bbar/nft/blob/master/nft_contract.py) to:
+    a. IPFS: setBaseTokenUri
+    b. enable private mint
+    c. enable public mint
+    d. set Merkle root to deployed contract
+  6. Deploy React website to for example https://cloud.digitalocean.com/
 
-For Step 2 and 3, refer to https://docs.google.com/document/d/1PRez5yvBTM_OVmFUaV1fX0Vx6wsTiBUZtPQHGgXwzgo
+Secondary Market: Opensea, LooksRare ..etc
+  Contract registration at Opensea: https://docs.opensea.io/docs/opensea-integration 
+
+For Step 4 and 6, refer to https://docs.google.com/document/d/1PRez5yvBTM_OVmFUaV1fX0Vx6wsTiBUZtPQHGgXwzgo
 
 II. React website preparation
+This website is a clone of https://www.youtube.com/watch?v=ynFNLBP2TPs, with modifications to solidity contract.
 1. Initial install:
     npx create-react-app felinesoulmate_web
     npm i -D hardhat
@@ -104,6 +117,8 @@ For example,
   To run:
     npm run start
 
+9. Final release to Digitalocean
+  https://docs.google.com/document/d/1sSHfQJrQwFBH_qtXKlN6INpuWYT5qXg9Q32gRrqvr9M
 
 Other references:
     https://faucet.rinkeby.io/
