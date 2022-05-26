@@ -1,3 +1,12 @@
+I. Overall
+1. Prepare React website and deploy Smart Contract following steps below in section II
+2. Use "Merkle_Tree_Whitelist_NFT-main" to compute merkleRoot
+3. Use "nft_contract.py" to set Merkle root to deployed contract
+4. Deploy React website to for example https://cloud.digitalocean.com/
+
+For Step 2 and 3, refer to https://docs.google.com/document/d/1PRez5yvBTM_OVmFUaV1fX0Vx6wsTiBUZtPQHGgXwzgo
+
+II. React website preparation
 1. Initial install:
     npx create-react-app felinesoulmate_web
     npm i -D hardhat
@@ -13,7 +22,7 @@
 2. \ contracts \ felinesoulmate.sol
 
 3. .env 
-ATTENTION!!! Format below. Be extremely careful exclude this from git repo (But for deployment to for example Digitalocean, you need include this), as such the repo for production release will contain .env and access to that repo need be restricted to wallet owner (And whoever else absolutely neccessary!!!)
+ATTENTION!!! Format below. Be extremely careful exclude this from git repo and set the same from "Environment Variables" in release process.
 
 REACT_APP_RINKEBY_RPC_URL='https://rinkeby.infura.io/v3/...' <-- from Infura.io (Make sure you specify correct Network. For testing, "Rinkeby")
 REACT_APP_ETHERSCAN_KEY='xxxxxxxxxxxxxxxxxxxxxxxx'  <-- From https://rinkeby.etherscan.io (Testing) or etherscan.io (Production, for real)

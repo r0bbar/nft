@@ -22,7 +22,7 @@ II. React website preparation
 2. \ contracts \ felinesoulmate.sol
 
 3. .env 
-ATTENTION!!! Format below. Be extremely careful exclude this from git repo (But for deployment to for example Digitalocean, you need include this), as such the repo for production release will contain .env and access to that repo need be restricted to wallet owner (And whoever else absolutely neccessary!!!)
+ATTENTION!!! Format below. Be extremely careful exclude this from git repo and set the same from "Environment Variables" in release process.
 
 REACT_APP_RINKEBY_RPC_URL='https://rinkeby.infura.io/v3/...' <-- from Infura.io (Make sure you specify correct Network. For testing, "Rinkeby")
 REACT_APP_ETHERSCAN_KEY='xxxxxxxxxxxxxxxxxxxxxxxx'  <-- From https://rinkeby.etherscan.io (Testing) or etherscan.io (Production, for real)
