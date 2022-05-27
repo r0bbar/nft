@@ -143,30 +143,36 @@ const MainMint = ( { accounts, setAccounts } ) => {
                                 +
                         </Button>
                     </div>
-                    <Button 
-                        backgroundColor="#212F3C" 
-                        borderRadius="25px"
-                        boxShadow="0px 2px 2px 1px #0F0F0F"
-                        color="white"
-                        cursor="pointer"
-                        fontFamily="inherit"
-                        padding="15px"
-                        margin="0 15px"
-                        onClick={handlePrivateMint}>
-                            Private Mint
-                    </Button>
-                    <Button 
-                        backgroundColor="#212F3C" 
-                        borderRadius="25px"
-                        boxShadow="0px 2px 2px 1px #0F0F0F"
-                        color="white"
-                        cursor="pointer"
-                        fontFamily="inherit"
-                        padding="15px"
-                        margin="0 15px"
-                        onClick={handlePublicMint}>
-                            Mint Now!
-                    </Button>
+                    <br></br>
+                    {process.env.REACT_APP_ENABLE_PUBLIC_MINT=='true'? (
+                        <Button 
+                            backgroundColor="#212F3C" 
+                            borderRadius="25px"
+                            boxShadow="0px 2px 2px 1px #0F0F0F"
+                            color="white"
+                            cursor="pointer"
+                            fontFamily="inherit"
+                            padding="15px"
+                            margin="0 15px"
+                            width="200px"
+                            onClick={handlePublicMint}>
+                                Mint Now!
+                        </Button>
+                    ) : (
+                        <Button 
+                            backgroundColor="#212F3C" 
+                            borderRadius="25px"
+                            boxShadow="0px 2px 2px 1px #0F0F0F"
+                            color="white"
+                            cursor="pointer"
+                            fontFamily="inherit"
+                            padding="15px"
+                            margin="0 15px"
+                            width="200px"
+                            onClick={handlePrivateMint}>
+                                Private Mint, VIP only.
+                        </Button>
+                    )}
                 </div>
             ) : (
                 <p>You must be connected to Mint.</p>
