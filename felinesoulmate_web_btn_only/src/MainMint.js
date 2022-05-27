@@ -111,7 +111,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         <Button 
                             backgroundColor="#212F3C"
                             borderRadius="5px"
-                            boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
                             fontFamily="Arial"
@@ -133,7 +132,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         <Button 
                             backgroundColor="#212F3C" 
                             borderRadius="5px"
-                            boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
                             fontFamily="Arial"
@@ -148,7 +146,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         <Button 
                             backgroundColor="#212F3C" 
                             borderRadius="25px"
-                            boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
                             fontFamily="inherit"
@@ -162,7 +159,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         <Button 
                             backgroundColor="#212F3C" 
                             borderRadius="25px"
-                            boxShadow="0px 2px 2px 1px #0F0F0F"
                             color="white"
                             cursor="pointer"
                             fontFamily="inherit"
