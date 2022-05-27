@@ -12,6 +12,7 @@ Primary Market
     c. enable public mint
     d. set Merkle root to deployed contract
   6. Deploy React website to for example https://cloud.digitalocean.com/
+    https://docs.google.com/document/d/1sSHfQJrQwFBH_qtXKlN6INpuWYT5qXg9Q32gRrqvr9M
 
 Secondary Market: Opensea, LooksRare ..etc
   Contract registration at Opensea: https://docs.opensea.io/docs/opensea-integration 
