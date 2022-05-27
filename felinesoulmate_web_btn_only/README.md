@@ -25,6 +25,7 @@ This website is a clone of https://www.youtube.com/watch?v=ynFNLBP2TPs, with mod
       REACT_APP_RINKEBY_RPC_URL='https://rinkeby.infura.io/v3/...'  <-- from Infura.io (Make sure you specify correct Network. For testing, "Rinkeby")
       REACT_APP_ETHERSCAN_KEY='xxxxxxxxxxxxxxxxxxxxxxxx'            <-- From https://rinkeby.etherscan.io (Testing) or etherscan.io (Production, for real)
       REACT_APP_PRIVATE_KEY='xxxxxxxxxxxxxx'                        <-- Your wallet
+      REACT_APP_ENABLE_PUBLIC_MINT='false'                          <-- self explanatory
 
     2. Deploy smart contract
         npx hardhat run scripts/deployFelinesoulmate.js --network rinkeby (Rinkeby is for DEV only)
