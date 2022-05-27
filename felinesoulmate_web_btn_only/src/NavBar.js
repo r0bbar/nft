@@ -27,6 +27,7 @@ const NavBar = ({ accounts, setAccounts} ) => {
                     cursor="pointer"
                     fontFamily="inherit"
                     padding="15px"
+                    width="200px"
                     margin="0 15px"
                     onClick={connectAccount}>
                         Connect
