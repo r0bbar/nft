@@ -4,7 +4,7 @@ import { ethers, BigNumber } from 'ethers';
 import felineSoulmate from './FelineSoulmate.json';
 import {Buffer} from 'buffer';
 
-const felineSoulmateAddress = "0x9A01A2Bed04877aDB63962f401F45a775c9030B3";
+const felineSoulmateAddress = "0x7ca77fb6c0a5b2446A3304a1528E873a4b858251";
 
 const MainMint = ( { accounts, setAccounts } ) => {
     const [ mintAmount, setMintAmount] = useState(1);
@@ -18,7 +18,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
             // Hardcoded here! If address not here, "getHexProof" will return null!!
             let whitelistAddresses = [
                 "0x07fa8e4f4ab4e4b72a7efca08f494a566a0c8568",
-                "0X5A641E5FB72A2FD9137312E7694D42996D689D99",
+                "0x7ef96a71d50f8a8f0fffb342a8c02bb0e29981ba",
                 "0XDCAB482177A592E424D1C8318A464FC922E8DE40",
                 "0X6E21D37E07A6F7E53C7ACE372CEC63D4AE4B6BD0",
                 "0X09BAAB19FC77C19898140DADD30C4685C597620B",
