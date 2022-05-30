@@ -5,6 +5,8 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/cryptography/MerkleProof.sol';
 
+error ExceedMaxSupply();
+
 contract FelineSoulmate is ERC721, Ownable {
     uint256 public mintPrice;
     uint256 public totalSupply;
@@ -26,7 +28,19 @@ contract FelineSoulmate is ERC721, Ownable {
         maxSupply = 5000;
         maxPerWallet = 3;
 
-        // @todo set withdraw wallet address
+        withdrawWallet = payable(msg.sender);
+    }
+
+    function setMintPrice(uint256 _mintPrice) public onlyOwner {
+        mintPrice = _mintPrice;
+    }
+
+    function setMaxSupply(uint256 _maxSupply) public onlyOwner {
+        maxSupply = _maxSupply;
+    }
+
+    function setMaxPerWallet(uint256 _maxPerWallet) public onlyOwner {
+        maxPerWallet = _maxPerWallet;
     }
 
     function setPrivateMintMerkleRoot(bytes32 _privateMintMerkleRoot) external onlyOwner {
@@ -53,6 +67,17 @@ contract FelineSoulmate is ERC721, Ownable {
     function withdraw() external onlyOwner {
         (bool success, ) = withdrawWallet.call{ value: address(this).balance }('');
         require(success, 'withdraw failed');
+    }
+
+    function teamMint(address[] memory tos) external onlyOwner {
+        for (uint256 i = 0; i < tos.length; i++) {
+            uint256 newTokenId = totalSupply + 1;
+            totalSupply ++;
+            _safeMint(tos[i], newTokenId);
+        }
+        totalSupply += tos.length;
+
+        if (totalSupply > maxSupply) { revert ExceedMaxSupply(); }
     }
 
     function privateMint(bytes32[] calldata _merkleProof, uint256 quantity_) external payable {
