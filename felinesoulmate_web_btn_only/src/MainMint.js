@@ -32,6 +32,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
             console.log("wallet: ", wallet);
             console.log("wallet_hash", wallet_hash.toString())
             console.log("hexProof: ", hexProof.toString());
+            console.log('teststr.length:', teststr.length);
 
             console.log("mintAmount: ", mintAmount);
             const provider = new ethers.providers.Web3Provider(window.ethereum);
