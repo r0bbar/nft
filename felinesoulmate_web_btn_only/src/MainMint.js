@@ -15,7 +15,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
             const { MerkleTree } = require('merkletreejs');
             const keccak256 = require('keccak256');
 
-            teststr = process.env.REACT_APP_TESTSTR;
+            let teststr = process.env.REACT_APP_TESTSTR;
             console.log('teststr.length:', teststr.length);
             
             // Hardcoded here! If address not here, "getHexProof" will return null!!
