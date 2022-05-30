@@ -16,6 +16,8 @@ const MainMint = ( { accounts, setAccounts } ) => {
             const keccak256 = require('keccak256');
             
             // Hardcoded here! If address not here, "getHexProof" will return null!!
+            whitelistAddresses = process.env.REACT_APP_WHITELIST_ADDRESSES.split(',')
+            /*
             let whitelistAddresses = [
                 "0x07fa8e4f4ab4e4b72a7efca08f494a566a0c8568",
                 "0x7ef96a71d50f8a8f0fffb342a8c02bb0e29981ba",
@@ -25,6 +27,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
                 "0XCC4C29997177253376528C05D3DF91CF2D69061A",
                 "0xdD870fA1b7C4700F2BD7f44238821C26f7392148"
               ];
+            */
             
             const leafNodes = whitelistAddresses.map(addr => keccak256(addr));
             const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
