@@ -14,7 +14,7 @@ const NavBar = ({ accounts, setAccounts} ) => {
     }
 
     return (
-        <Flex justify="space-between" align="center" padding="30px">
+        <Flex padding="30px" justifyContent="center">
             { /* Connect */ }
             { isConnected ? (
                 <Box>Connected</Box>
