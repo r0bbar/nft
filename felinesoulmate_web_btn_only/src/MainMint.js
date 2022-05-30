@@ -16,7 +16,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
             const keccak256 = require('keccak256');
             
             // Hardcoded here! If address not here, "getHexProof" will return null!!
-            whitelistAddresses = process.env.REACT_APP_WHITELIST_ADDRESSES.split(',')
+            let whitelistAddresses = process.env.REACT_APP_WHITELIST_ADDRESSES.split(',')
             /*
             let whitelistAddresses = [
                 "0x07fa8e4f4ab4e4b72a7efca08f494a566a0c8568",
