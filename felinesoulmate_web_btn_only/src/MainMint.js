@@ -14,9 +14,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
         if (window.ethereum) {
             const { MerkleTree } = require('merkletreejs');
             const keccak256 = require('keccak256');
-
-            let teststr = process.env.REACT_APP_TESTSTR;
-            console.log('teststr.length:', teststr.length);
             
             // Hardcoded here! If address not here, "getHexProof" will return null!!
             let whitelistAddresses = process.env.REACT_APP_WHITELIST_ADDRESSES.split(',');
@@ -32,7 +29,6 @@ const MainMint = ( { accounts, setAccounts } ) => {
             console.log("wallet: ", wallet);
             console.log("wallet_hash", wallet_hash.toString())
             console.log("hexProof: ", hexProof.toString());
-            console.log('teststr.length:', teststr.length);
 
             console.log("mintAmount: ", mintAmount);
             const provider = new ethers.providers.Web3Provider(window.ethereum);
