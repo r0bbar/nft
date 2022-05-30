@@ -117,12 +117,15 @@ This website is a clone of https://www.youtube.com/watch?v=ynFNLBP2TPs, with mod
         Successfully verified contract FelineSoulmate on Etherscan.
         https://rinkeby.etherscan.io/address/0x383703e94a2800B35BD97a097a4B6e24D2fb2369#code
 
-    7. ATTENTION!!! Copy "FelineSoulmate.json"
+    7. ATTENTION!!! 
+        a. Copy "FelineSoulmate.json"
         FROM: C:\dev\nft\felinesoulmate_web\artifacts\contracts
         TO: C:\dev\nft\felinesoulmate_web\src
 
-        And also update contract address in MainMint.js
+        b. update contract address in MainMint.js
         (React buttons use this address!!!)
+
+        c. nft_contract_abi in "nft_contract.py"
 
     8. React part
         a. App.js
