@@ -2061,6 +2061,7 @@ contract FelineSoulmate is ERC721A {
         require(tx.origin == msg.sender, 'Contract Denied.'); // https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why
         require(totalSupply() + _count <= maxSupply, "Exceeds maximum supply");
         require(_count > 0, "Minimum 1 NFT has to be minted per transaction");
+        require(!privateMintParticipants[msg.sender], 'Mint already claimed!');
 
         if (msg.sender != owner()) {
             require(
