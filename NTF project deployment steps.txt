@@ -1,0 +1,73 @@
+NFT project
+	Project root folder:
+		https://github.com/r0bbar/nft
+	
+	Starting point: 
+		https://github.com/r0bbar/nft/blob/master/felinesoulmate_web_btn_only/README.md
+	
+	STEP 1. Review Smart contract: https://github.com/r0bbar/nft/blob/master/felinesoulmate_web_btn_only/contracts/felinesoulmate.sol
+		Look for contract "FelineSoulmate is ERC721A". Our contract is based off ERC721A from Azuki to save gas.
+			https://www.alchemy.com/blog/erc721-vs-erc721a-batch-minting-nfts
+			https://www.azuki.com/erc721a
+
+		Review price, maxSupply, mintCount, maxMintPerTx, maxMintPerWallet 
+	
+	STEP 2. Deployment of smart contract
+		a. Test nets Rinkeby: 
+			* Please make sure your wallet has some ETH on Rinkeby test network
+			https://faucet.rinkeby.io/
+			* We use this hardhat command to deploy, this requires install nodejs (https://nodejs.org/en/download/).
+			  Then install hardhat:
+				npm i -D hardhat
+				npx hardhat
+				npm i @openzeppelin/contracts
+				npm i -D dotenv
+				npm install -D @nomiclabs/hardhat-waffle ethereum-waffle 
+				npm i -D @nomiclabs/hardhat-etherscan
+			  Finally deploy:
+				npx hardhat run scripts/deployFelinesoulmate.js --network rinkeby
+			
+			Alternative is use Remix.
+			
+			After that's done, as mentioned in README.md:
+				a. Copy "FelineSoulmate.json"
+				FROM: C:\dev\nft\felinesoulmate_web\artifacts\contracts
+				TO: C:\dev\nft\felinesoulmate_web\src
+
+				b. update contract address in MainMint.js 
+				https://github.com/r0bbar/nft/blob/master/felinesoulmate_web_btn_only/src/MainMint.js
+				(React buttons use this address!!!)
+
+				c. nft_contract_abi in "nft_contract.py" https://github.com/r0bbar/nft/blob/master/nft_contract.py
+			
+		b. Go live:
+			* .env file need updated (REACT_APP_RINKEBY_RPC_URL needs reference Infura url for Ethereum mainnet. Other varibles?)
+			* hardhat.config.js - need add Ethereum mainnet to under "networks" tag
+			
+			
+	STEP 3. Deploy React website to for example https://cloud.digitalocean.com/
+		Follow steps here:
+		https://docs.google.com/document/d/1sSHfQJrQwFBH_qtXKlN6INpuWYT5qXg9Q32gRrqvr9M
+		
+	Then give Blue the newly url so he embeds in an iframe like this: https://github.com/r0bbar/nft/blob/master/nft_iframe_demo.html 
+	
+	STEP 4. Set contract parameters
+		* IPFS base url
+		* merkle tree (White list)
+			Use this javascript (run with nodejs) to calc merkle tree. Which is then set in the smart contract.
+			https://github.com/r0bbar/nft/blob/master/Merkle_Tree_Whitelist_NFT-main/merkle_tree.js
+		* "is revealed" (Blind box)
+		* enable private/public mint
+		* team mint. 
+		
+		You can use this python (Install Anaconda https://www.anaconda.com/products/distribution)
+		https://github.com/r0bbar/nft/blob/master/nft_contract.py
+		
+		Or do it directly on Etherscan.
+		
+		CAUTION: Make sure test
+		* Blind box
+		* withdraw
+		* team mint
+		We haven't done this yet!!
+		
