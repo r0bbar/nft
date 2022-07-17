@@ -134,33 +134,57 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         </Button>
                     </div>
                     <br></br>
-                    {process.env.REACT_APP_ENABLE_PUBLIC_MINT=='true'? (
-                        <Button 
-                            backgroundColor="#212F3C" 
-                            borderRadius="25px"
-                            color="white"
-                            cursor="pointer"
-                            fontFamily="inherit"
-                            padding="15px"
-                            margin="0 15px"
-                            width="200px"
-                            onClick={handlePublicMint}>
-                                Mint Now!
-                        </Button>
-                    ) : (
-                        <Button 
-                            backgroundColor="#212F3C" 
-                            borderRadius="25px"
-                            color="white"
-                            cursor="pointer"
-                            fontFamily="inherit"
-                            padding="15px"
-                            margin="0 15px"
-                            width="200px"
-                            onClick={handlePrivateMint}>
-                                Private Mint, VIP only.
-                        </Button>
-                    )}
+                    <div className="some-container">
+                    {
+                    (() => {
+                        if (process.env.REACT_APP_ENABLE_PUBLIC_MINT=='false' && process.env.REACT_APP_CAMPAIGN_STARTED=='true')
+                            return <span>
+                                <Button 
+                                    backgroundColor="#212F3C" 
+                                    borderRadius="25px"
+                                    color="white"
+                                    cursor="pointer"
+                                    fontFamily="inherit"
+                                    padding="15px"
+                                    margin="0 15px"
+                                    width="200px"
+                                    onClick={handlePrivateMint}>
+                                        Private Mint, VIP only.
+                                </Button>
+                            </span>
+                        if (process.env.REACT_APP_ENABLE_PUBLIC_MINT=='true' && process.env.REACT_APP_CAMPAIGN_STARTED=='true')
+                            return <span>
+                                <Button 
+                                    backgroundColor="#212F3C" 
+                                    borderRadius="25px"
+                                    color="white"
+                                    cursor="pointer"
+                                    fontFamily="inherit"
+                                    padding="15px"
+                                    margin="0 15px"
+                                    width="200px"
+                                    onClick={handlePublicMint}>
+                                        Mint Now!
+                                </Button>
+                            </span>
+                        else
+                            return <span>
+                                <Button 
+                                    backgroundColor="#212F3C" 
+                                    borderRadius="25px"
+                                    color="white"
+                                    cursor="pointer"
+                                    fontFamily="inherit"
+                                    padding="15px"
+                                    margin="0 15px"
+                                    width="200px"
+                                    >
+                                        Minting coming soon!
+                                </Button>
+                            </span>
+                    })()
+                    }
+                    </div>
                 </div>
             ) : (
                 <p>You must be connected to Mint.</p>
