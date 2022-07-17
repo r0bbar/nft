@@ -2016,7 +2016,7 @@ contract FelineSoulmate is ERC721A {
         setHiddenMetadataUri("ipfs://__CID__/hidden.json");
     }
 
-    uint256 public constant maxSupply = 5555;
+    uint256 public maxSupply = 5555;
     uint256 private mintCount = 0;
     uint256 public maxMintPerTx = 5;
     uint256 public maxMintPerWallet = 5;   
@@ -2035,6 +2035,18 @@ contract FelineSoulmate is ERC721A {
 
     function totalSupply() public view override returns (uint256) {
         return mintCount;
+    }
+
+    function changeMaxSupply(uint256 _newMaxSupply) external onlyOwner {
+        maxSupply = _newMaxSupply;
+    }
+
+    function changeMaxMintPerTx(uint256 _newMaxMintPerTx) external onlyOwner {
+        maxMintPerTx = _newMaxMintPerTx;
+    }
+
+    function changeMaxMintPerWallet(uint256 _newMaxMintPerWallet) external onlyOwner {
+        maxMintPerWallet = _newMaxMintPerWallet;
     }
 
     function changePrice(uint256 _newPrice) external onlyOwner {
