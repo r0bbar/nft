@@ -52,6 +52,12 @@ NFT project
 				(React buttons use this address!!!)
 
 				c. nft_contract_abi in "nft_contract.py" https://github.com/r0bbar/nft/blob/master/nft_contract.py
+				
+			Alternative to hardhat: ETHERSCAN - CONTRACT VERIFICATION plugin
+			https://www.youtube.com/watch?v=qz9PD2zttmk
+			https://dev.to/jamiescript/how-to-deploy-and-verify-a-smart-contract-from-remix-42gl
+			
+			Why we need alternative? Hardhat support for Ledger? https://github.com/wighawag/hardhat-deploy/issues/88
 			
 		b. Go live:
 			* .env file need updated (REACT_APP_RINKEBY_RPC_URL needs reference Infura url for Ethereum mainnet. Other varibles?)
