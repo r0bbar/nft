@@ -13,10 +13,20 @@ NFT project
 		Review price, maxSupply, mintCount, maxMintPerTx, maxMintPerWallet 
 	
 	STEP 2. Deployment of smart contract
+		Downdown Gitextension
+		Download Nodejs https://nodejs.org/en/download/
+		Pull code from https://github.com/r0bbar/nft.git
+		Update .env
+		Open acct with https://infura.io/, create project with Rinkeby network. Save down that URL and update .env REACT_APP_RINKEBY_RPC_URL
+		
 		a. Test nets Rinkeby: 
 			* Please make sure your wallet has some ETH on Rinkeby test network
 			https://faucet.rinkeby.io/
 			* We use this hardhat command to deploy, this requires install nodejs (https://nodejs.org/en/download/).
+			
+			  Then start command prompt to "felinesoulmate_web_btn_only", and:
+				npm install
+				
 			  Then install hardhat:
 				npm i -D hardhat
 				npx hardhat
@@ -25,7 +35,10 @@ NFT project
 				npm install -D @nomiclabs/hardhat-waffle ethereum-waffle 
 				npm i -D @nomiclabs/hardhat-etherscan
 			  Finally deploy:
+				npx hardhat clean
+				npx hardhat compile
 				npx hardhat run scripts/deployFelinesoulmate.js --network rinkeby
+				npx hardhat verify --network rinkeby $ADDRESS$
 			
 			Alternative is use Remix.
 			
