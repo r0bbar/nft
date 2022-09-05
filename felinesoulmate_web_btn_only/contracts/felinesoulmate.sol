@@ -2020,7 +2020,7 @@ contract FelineSoulmate is ERC721A {
     uint256 private mintCount = 0;
     uint256 public maxMintPerTx = 5;
     uint256 public maxMintPerWallet = 5;   
-    uint256 public price = 0.01 ether;
+    uint256 public price = 0.1 ether;
 
     mapping (address => uint256) public addressMintedBalance;
 
