@@ -12,6 +12,8 @@ const MainMint = ( { accounts, setAccounts } ) => {
 
     async function handlePrivateMint() {
         if (window.ethereum) {
+            let nft_pric_eth = parseFloat(process.env.REACT_APP_NFT_PRICE);
+
             const { MerkleTree } = require('merkletreejs');
             const keccak256 = require('keccak256');
             
@@ -45,7 +47,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
                     BigNumber.from(mintAmount), 
                     { 
                         value: ethers.utils.parseEther(
-                                (0.02 * mintAmount).toString()
+                                (nft_pric_eth * mintAmount).toString()
                             )
                     }
                 );
@@ -58,6 +60,8 @@ const MainMint = ( { accounts, setAccounts } ) => {
 
     async function handlePublicMint() {
         if (window.ethereum) {
+            let nft_pric_eth = parseFloat(process.env.REACT_APP_NFT_PRICE);
+
             console.log("wallet: ", accounts[0]);
 
             console.log("mintAmount: ", mintAmount);
@@ -74,7 +78,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
                     BigNumber.from(mintAmount), 
                     { 
                         value: ethers.utils.parseEther(
-                                (0.02 * mintAmount).toString()
+                                (nft_pric_eth * mintAmount).toString()
                             )
                     }
                 );
