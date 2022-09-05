@@ -2058,7 +2058,7 @@ contract FelineSoulmate is ERC721A {
     }
 
     function withdraw() external onlyOwner {
-        (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool success, ) = payable(withdrawWallet).call{value: address(this).balance}("");
         require(success, "Transfer failed.");
     }
 
