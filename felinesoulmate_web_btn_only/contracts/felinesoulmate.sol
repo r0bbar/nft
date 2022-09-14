@@ -2037,6 +2037,14 @@ contract FelineSoulmate is ERC721A {
         return mintCount;
     }
 
+    function getTokenUrl() public view returns (string memory) {
+        if (isRevealed == false) {
+            return hiddenMetadataUri;
+        } else {
+            return _baseURI();
+        }
+    }
+
     function changeMaxSupply(uint256 _newMaxSupply) external onlyOwner {
         maxSupply = _newMaxSupply;
     }
