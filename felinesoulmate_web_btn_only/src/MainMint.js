@@ -4,7 +4,7 @@ import { ethers, BigNumber } from 'ethers';
 import felineSoulmate from './FelineSoulmate.json';
 import {Buffer} from 'buffer';
 
-const felineSoulmateAddress = "0x2515c616a8d5bd28a8e258e7fe671ea28bb896bd";
+const felineSoulmateAddress = "0x6e31Cc92D9721490ed8110FA75C5419581BB1Fc5";
 
 const MainMint = ( { accounts, setAccounts } ) => {
     const [ mintAmount, setMintAmount] = useState(1);
