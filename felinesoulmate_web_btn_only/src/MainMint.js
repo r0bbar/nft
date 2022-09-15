@@ -80,7 +80,7 @@ const MainMint = ( { accounts, setAccounts } ) => {
                         value: ethers.utils.parseEther(
                                 (nft_pric_eth * mintAmount).toString()
                             ),
-                        gasLimit: 8000000
+                        gasLimit: 80000
                     }
                 );
                 console.log("Response: ", response);
